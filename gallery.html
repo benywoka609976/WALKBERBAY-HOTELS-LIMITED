@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Walkerbay Hotel Limited</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #1a3d7c;
+            --secondary-blue: #2a5ba7;
+            --accent-blue: #4a7bc8;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: var(--light-text);
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .gallery-hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.7), rgba(26, 61, 124, 0.7)), url('images/gallery-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 90px;
+        }
+        
+        .gallery-hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-hero-content p {
+            font-size: 20px;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery Filter */
+        .gallery-filter {
+            background-color: var(--light-blue);
+            padding: 40px 0;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            background-color: var(--white);
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 20px;
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-category {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            color: var(--light-blue);
+        }
+        
+        .gallery-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Video Gallery Section */
+        .video-gallery {
+            background-color: var(--white);
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .video-play-btn:hover {
+            background-color: var(--white);
+        }
+        
+        .video-play-btn::after {
+            content: '';
+            border-style: solid;
+            border-width: 10px 0 10px 20px;
+            border-color: transparent transparent transparent var(--primary-blue);
+            margin-left: 5px;
+        }
+        
+        .video-info {
+            padding: 20px;
+            background-color: var(--white);
+        }
+        
+        .video-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* 360 Virtual Tour */
+        .virtual-tour {
+            background-color: var(--light-blue);
+            text-align: center;
+        }
+        
+        .tour-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .tour-container h2 {
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+        
+        .tour-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: var(--white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .tour-icon {
+            font-size: 80px;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+        
+        /* Photo Gallery Sections */
+        .photo-gallery {
+            background-color: var(--white);
+        }
+        
+        .gallery-section {
+            margin-bottom: 80px;
+        }
+        
+        .gallery-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .gallery-section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-section-title h3 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .gallery-section-title h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .gallery-section-title p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow: hidden;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+        
+        .lightbox-caption {
+            color: var(--white);
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-prev, .lightbox-next {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow: hidden;
+        }
+        
+        .video-modal-content {
+            position: relative;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        .video-modal-content iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .gallery-hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .gallery-hero-content p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 90px);
+                background-color: var(--white);
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .gallery-hero {
+                height: 40vh;
+                margin-top: 90px;
+            }
+            
+            .gallery-hero-content h2 {
+                font-size: 28px;
+            }
+            
+            .gallery-hero-content p {
+                font-size: 16px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 200px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tour-placeholder {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Walkerbay Hotel Logo">
+                <div class="logo-text">
+                    <h1>WALKERBAY HOTELS LIMITED</h1>
+                    <p>Where Hospitality Meets Adventure</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="accommodation.html">Accommodation</a></li>
+                    <li><a href="dining.html">Dining & Entertainment</a></li>
+                    <li><a href="conferences.html">Conferences</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn" id="book-now-btn">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Gallery Hero Section -->
+    <section class="gallery-hero">
+        <div class="container gallery-hero-content">
+            <div>
+                <h2>Visual Journey</h2>
+                <p>Explore the beauty and luxury of Walkerbay Hotel through our stunning visual collection</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter Section -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="accommodation">Accommodation</button>
+                <button class="filter-btn" data-filter="dining">Dining</button>
+                <button class="filter-btn" data-filter="conferences">Conferences</button>
+                <button class="filter-btn" data-filter="facilities">Facilities</button>
+                <button class="filter-btn" data-filter="surroundings">Surroundings</button>
+            </div>
+            
+            <div class="gallery-grid" id="photo-gallery">
+                <!-- Accommodation Images -->
+                <div class="gallery-item" data-category="accommodation">
+                    <img src="images/gallery/victoria-suite-1.jpg" alt="Victoria Suite" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Accommodation</div>
+                        <div class="gallery-title">Victoria Suite</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="accommodation">
+                    <img src="images/gallery/victoria-suite-2.jpg" alt="Victoria Suite Bathroom" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Accommodation</div>
+                        <div class="gallery-title">Luxury Bathroom</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="accommodation">
+                    <img src="images/gallery/standard-room-1.jpg" alt="Standard Room" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Accommodation</div>
+                        <div class="gallery-title">Standard Room</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="accommodation">
+                    <img src="images/gallery/villa-1.jpg" alt="Four-Bedroom Villa" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Accommodation</div>
+                        <div class="gallery-title">Four-Bedroom Villa</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="accommodation">
+                    <img src="images/gallery/villa-living.jpg" alt="Villa Living Area" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Accommodation</div>
+                        <div class="gallery-title">Villa Living Area</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="accommodation">
+                    <img src="images/gallery/apartment-1.jpg" alt="Nairobi Apartment" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Accommodation</div>
+                        <div class="gallery-title">Nairobi Apartment</div>
+                    </div>
+                </div>
+                
+                <!-- Dining Images -->
+                <div class="gallery-item" data-category="dining">
+                    <img src="images/gallery/restaurant-1.jpg" alt="Main Restaurant" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Dining</div>
+                        <div class="gallery-title">Lakeview Restaurant</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dining">
+                    <img src="images/gallery/nyama-choma.jpg" alt="Nyama Choma Zone" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Dining</div>
+                        <div class="gallery-title">Nyama Choma Zone</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dining">
+                    <img src="images/gallery/sports-bar-1.jpg" alt="Sports Bar" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Dining</div>
+                        <div class="gallery-title">Victoria Sports Bar</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dining">
+                    <img src="images/gallery/dish-1.jpg" alt="Signature Dish" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Dining</div>
+                        <div class="gallery-title">Signature Dish - Athola</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dining">
+                    <img src="images/gallery/dish-2.jpg" alt="Seafood Platter" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Dining</div>
+                        <div class="gallery-title">Fresh Seafood Platter</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dining">
+                    <img src="images/gallery/dish-3.jpg" alt="Dessert" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Dining</div>
+                        <div class="gallery-title">Dessert Selection</div>
+                    </div>
+                </div>
+                
+                <!-- Conference Images -->
+                <div class="gallery-item" data-category="conferences">
+                    <img src="images/gallery/conference-1.jpg" alt="Conference Hall" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Conferences</div>
+                        <div class="gallery-title">Main Conference Hall</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="conferences">
+                    <img src="images/gallery/conference-2.jpg" alt="Boardroom" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Conferences</div>
+                        <div class="gallery-title">Executive Boardroom</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="conferences">
+                    <img src="images/gallery/team-building-1.jpg" alt="Team Building" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Conferences</div>
+                        <div class="gallery-title">Team Building Activity</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="conferences">
+                    <img src="images/gallery/corporate-event.jpg" alt="Corporate Event" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Conferences</div>
+                        <div class="gallery-title">Corporate Dinner</div>
+                    </div>
+                </div>
+                
+                <!-- Facilities Images -->
+                <div class="gallery-item" data-category="facilities">
+                    <img src="images/gallery/pool-1.jpg" alt="Swimming Pool" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Facilities</div>
+                        <div class="gallery-title">Swimming Pool</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <img src="images/gallery/gym-1.jpg" alt="Gym" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Facilities</div>
+                        <div class="gallery-title">Gymnasium</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <img src="images/gallery/lobby-1.jpg" alt="Hotel Lobby" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Facilities</div>
+                        <div class="gallery-title">Hotel Lobby</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <img src="images/gallery/spa-1.jpg" alt="Spa" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Facilities</div>
+                        <div class="gallery-title">Spa & Wellness</div>
+                    </div>
+                </div>
+                
+                <!-- Surroundings Images -->
+                <div class="gallery-item" data-category="surroundings">
+                    <img src="images/gallery/lake-view-1.jpg" alt="Lake Victoria View" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Surroundings</div>
+                        <div class="gallery-title">Lake Victoria Sunset</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="surroundings">
+                    <img src="images/gallery/beach-1.jpg" alt="Lakeside Beach" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Surroundings</div>
+                        <div class="gallery-title">Lakeside Beach</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="surroundings">
+                    <img src="images/gallery/garden-1.jpg" alt="Hotel Gardens" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Surroundings</div>
+                        <div class="gallery-title">Hotel Gardens</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="surroundings">
+                    <img src="images/gallery/sunset-1.jpg" alt="Sunset" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Surroundings</div>
+                        <div class="gallery-title">Evening Sunset</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section class="video-gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Video Gallery</h2>
+                <p>Experience Walkerbay Hotel through our collection of videos showcasing our facilities and services</p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <img src="images/video-thumbnails/hotel-tour.jpg" alt="Hotel Tour" class="video-thumbnail">
+                    <div class="video-play-btn" data-video="videos/hotel-tour.mp4"></div>
+                    <div class="video-info">
+                        <h3>Virtual Hotel Tour</h3>
+                        <p>Take a guided tour of our luxurious facilities and accommodation options</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <img src="images/video-thumbnails/dining-experience.jpg" alt="Dining Experience" class="video-thumbnail">
+                    <div class="video-play-btn" data-video="videos/dining-experience.mp4"></div>
+                    <div class="video-info">
+                        <h3>Culinary Journey</h3>
+                        <p>Discover our diverse dining options and signature dishes</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <img src="images/video-thumbnails/conference-facilities.jpg" alt="Conference Facilities" class="video-thumbnail">
+                    <div class="video-play-btn" data-video="videos/conference-facilities.mp4"></div>
+                    <div class="video-info">
+                        <h3>Conference Facilities</h3>
+                        <p>Explore our state-of-the-art meeting and event spaces</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <img src="images/video-thumbnails/lake-victoria.jpg" alt="Lake Victoria" class="video-thumbnail">
+                    <div class="video-play-btn" data-video="videos/lake-victoria.mp4"></div>
+                    <div class="video-info">
+                        <h3>Lake Victoria Experience</h3>
+                        <p>Immerse yourself in the beauty of Africa's largest lake</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <img src="images/video-thumbnails/team-building.jpg" alt="Team Building" class="video-thumbnail">
+                    <div class="video-play-btn" data-video="videos/team-building.mp4"></div>
+                    <div class="video-info">
+                        <h3>Team Building Activities</h3>
+                        <p>Watch our engaging corporate team building programs in action</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <img src="images/video-thumbnails/customer-testimonials.jpg" alt="Customer Testimonials" class="video-thumbnail">
+                    <div class="video-play-btn" data-video="videos/customer-testimonials.mp4"></div>
+                    <div class="video-info">
+                        <h3>Guest Experiences</h3>
+                        <p>Hear what our guests have to say about their stay at Walkerbay Hotel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 360 Virtual Tour Section -->
+    <section class="virtual-tour">
+        <div class="container">
+            <div class="tour-container">
+                <h2>360° Virtual Tour</h2>
+                <div class="tour-placeholder">
+                    <div class="tour-icon">🔄</div>
+                    <h3>Interactive Virtual Experience</h3>
+                    <p>Explore our hotel in immersive 360° detail</p>
+                    <button class="btn" style="margin-top: 20px;">Launch Virtual Tour</button>
+                </div>
+                <p>Take a self-guided virtual tour of our facilities, including guest rooms, conference halls, dining areas, and recreational facilities. Experience Walkerbay Hotel from the comfort of your own device.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Sections -->
+    <section class="photo-gallery">
+        <div class="container">
+            <div class="gallery-section">
+                <div class="gallery-section-title">
+                    <h3>Accommodation Gallery</h3>
+                    <p>Explore our luxurious rooms and suites designed for your comfort</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/gallery/suite-bedroom.jpg" alt="Suite Bedroom" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Accommodation</div>
+                            <div class="gallery-title">Suite Bedroom</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/bathroom-luxury.jpg" alt="Luxury Bathroom" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Accommodation</div>
+                            <div class="gallery-title">Luxury Bathroom</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/balcony-view.jpg" alt="Balcony View" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Accommodation</div>
+                            <div class="gallery-title">Private Balcony</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/villa-exterior.jpg" alt="Villa Exterior" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Accommodation</div>
+                            <div class="gallery-title">Villa Exterior</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-section">
+                <div class="gallery-section-title">
+                    <h3>Dining & Entertainment</h3>
+                    <p>Experience our culinary delights and vibrant entertainment venues</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/gallery/restaurant-interior.jpg" alt="Restaurant Interior" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Dining</div>
+                            <div class="gallery-title">Restaurant Interior</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/bar-setting.jpg" alt="Bar Setting" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Dining</div>
+                            <div class="gallery-title">Bar Setting</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/live-music.jpg" alt="Live Music" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Entertainment</div>
+                            <div class="gallery-title">Live Music Performance</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/outdoor-dining.jpg" alt="Outdoor Dining" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Dining</div>
+                            <div class="gallery-title">Lakeside Dining</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-section">
+                <div class="gallery-section-title">
+                    <h3>Hotel Facilities</h3>
+                    <p>Discover our premium amenities and services</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/gallery/pool-area.jpg" alt="Pool Area" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Facilities</div>
+                            <div class="gallery-title">Pool Area</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/spa-treatment.jpg" alt="Spa Treatment" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Facilities</div>
+                            <div class="gallery-title">Spa Treatment</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/gym-equipment.jpg" alt="Gym Equipment" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Facilities</div>
+                            <div class="gallery-title">Fitness Center</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/business-center.jpg" alt="Business Center" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-category">Facilities</div>
+                            <div class="gallery-title">Business Center</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Walkerbay Hotel</h3>
+                    <p>Where Hospitality Meets Adventure. Experience luxury accommodation, fine dining, and exceptional service at the shores of Lake Victoria.</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="accommodation.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i>📍</i>
+                            <span>Muhuru-Bay, Migori County, Kenya</span>
+                        </li>
+                        <li>
+                            <i>📞</i>
+                            <span>+254 712 345 678</span>
+                        </li>
+                        <li>
+                            <i>✉️</i>
+                            <span>info@walkerbayhotel.co.ke</span>
+                        </li>
+                        <li>
+                            <i>🌐</i>
+                            <span>www.walkerbayhotel.co.ke</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Walkerbay Hotel Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox-modal">
+        <div class="lightbox-content">
+            <button class="lightbox-close">&times;</button>
+            <div class="lightbox-nav">
+                <button class="lightbox-prev">&#10094;</button>
+                <button class="lightbox-next">&#10095;</button>
+            </div>
+            <img src="" alt="" class="lightbox-image">
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-content">
+            <button class="video-modal-close">&times;</button>
+            <iframe src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Gallery Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox Functionality
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxCaption = document.querySelector('.lightbox-caption');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+        
+        let currentImageIndex = 0;
+        let images = [];
+        
+        // Initialize images array with all gallery items
+        galleryItems.forEach(item => {
+            const img = item.querySelector('.gallery-image');
+            const category = item.getAttribute('data-category');
+            const title = item.querySelector('.gallery-title').textContent;
+            
+            images.push({
+                src: img.src,
+                alt: img.alt,
+                category: category,
+                title: title
+            });
+        });
+        
+        // Open lightbox when gallery item is clicked
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                currentImageIndex = index;
+                updateLightbox();
+                lightboxModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close lightbox
+        lightboxClose.addEventListener('click', function() {
+            lightboxModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Previous image
+        lightboxPrev.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateLightbox();
+        });
+        
+        // Next image
+        lightboxNext.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateLightbox();
+        });
+        
+        // Update lightbox content
+        function updateLightbox() {
+            const currentImage = images[currentImageIndex];
+            lightboxImage.src = currentImage.src;
+            lightboxImage.alt = currentImage.alt;
+            lightboxCaption.textContent = currentImage.title;
+        }
+        
+        // Close lightbox when clicking outside the image
+        lightboxModal.addEventListener('click', function(e) {
+            if (e.target === lightboxModal) {
+                lightboxModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Video Modal Functionality
+        const videoModal = document.getElementById('video-modal');
+        const videoIframe = videoModal.querySelector('iframe');
+        const videoModalClose = document.querySelector('.video-modal-close');
+        const videoPlayButtons = document.querySelectorAll('.video-play-btn');
+        
+        videoPlayButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const videoSrc = this.getAttribute('data-video');
+                videoIframe.src = videoSrc;
+                videoModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        videoModalClose.addEventListener('click', function() {
+            videoModal.style.display = 'none';
+            videoIframe.src = '';
+            document.body.style.overflow = 'auto';
+        });
+        
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                videoModal.style.display = 'none';
+                videoIframe.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Book Now button functionality
+        document.getElementById('book-now-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'accommodation.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Walkerbay Hotel Limited</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #1a3d7c;
+            --secondary-blue: #2a5ba7;
+            --accent-blue: #4a7bc8;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: var(--light-text);
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.7), rgba(26, 61, 124, 0.7)), url('images/about-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 90px;
+        }
+        
+        .about-hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-hero-content p {
+            font-size: 20px;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Intro Section */
+        .about-intro {
+            background-color: var(--light-blue);
+        }
+        
+        .about-intro-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-intro-text {
+            flex: 1;
+        }
+        
+        .about-intro-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-intro-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* CEO Message Section */
+        .ceo-message {
+            background-color: var(--white);
+        }
+        
+        .ceo-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .ceo-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ceo-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .ceo-text {
+            flex: 2;
+        }
+        
+        .ceo-text h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .ceo-text p {
+            margin-bottom: 20px;
+        }
+        
+        .ceo-signature {
+            margin-top: 30px;
+            font-style: italic;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        /* Values Section */
+        .values {
+            background-color: var(--light-blue);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-blue);
+            font-size: 30px;
+        }
+        
+        .value-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* Location Section */
+        .location {
+            background-color: var(--white);
+        }
+        
+        .location-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .location-text {
+            flex: 1;
+        }
+        
+        .location-text p {
+            margin-bottom: 20px;
+        }
+        
+        .location-features {
+            margin: 25px 0;
+        }
+        
+        .location-features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .location-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .location-map {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: var(--light-blue);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Video Section */
+        .video-section {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-container h2 {
+            margin-bottom: 30px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-intro-content,
+            .ceo-content,
+            .location-content {
+                flex-direction: column;
+            }
+            
+            .about-hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .about-hero-content p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 90px);
+                background-color: var(--white);
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .about-hero {
+                height: 50vh;
+                margin-top: 90px;
+            }
+            
+            .about-hero-content h2 {
+                font-size: 28px;
+            }
+            
+            .about-hero-content p {
+                font-size: 16px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Walkerbay Hotel Logo">
+                <div class="logo-text">
+                    <h1>WALKERBAY HOTELS LIMITED</h1>
+                    <p>Where Hospitality Meets Adventure</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="accommodation.html">Accommodation</a></li>
+                    <li><a href="dining.html">Dining & Entertainment</a></li>
+                    <li><a href="conferences.html">Conferences</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn" id="book-now-btn">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container about-hero-content">
+            <div>
+                <h2>About Walkerbay Hotel</h2>
+                <p>Discover our story, values, and commitment to exceptional hospitality</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Intro Section -->
+    <section class="about-intro">
+        <div class="container">
+            <div class="about-intro-content">
+                <div class="about-intro-text">
+                    <h2>Our Story</h2>
+                    <p>Walkerbay Hotel Limited was established with a vision to create an oasis of tranquility and luxury on the shores of Lake Victoria. Located in the picturesque Muhuru-Bay, Migori County, our hotel serves as the perfect gateway to Tanzania and Uganda, offering unparalleled access to some of East Africa's most breathtaking destinations.</p>
+                    <p>From our humble beginnings, we have grown to become one of the most trusted hospitality brands in the Lake Victoria region, known for our commitment to exceptional service, modern comfort, and authentic Kenyan hospitality.</p>
+                    <p>Our property comprises 11 well-appointed Standard guest rooms and 2 luxurious suites, 2 restaurants, 2 bars, 24-hour In-Room Dining service, and a well-equipped gymnasium. With over 1500 sqm of meeting and banquet space, we are the perfect venue for seminars, large conferences, cocktail events, and corporate dinners.</p>
+                    <a href="gallery.html" class="btn">View Our Gallery</a>
+                </div>
+                <div class="about-intro-image">
+                    <img src="images/view.jpeg" alt="Walkerbay Hotel Exterior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Message Section -->
+    <section class="ceo-message">
+        <div class="container">
+            <div class="section-title">
+                <h2>Message from Our CEO</h2>
+                <p>Leadership vision and commitment to excellence</p>
+            </div>
+            <div class="ceo-content">
+                <div class="ceo-image">
+                    <img src="images/CEO.png" alt="CEO of Walkerbay Hotel">
+                </div>
+                <div class="ceo-text">
+                    <h3>Welcome to Walkerbay Hotels Limited</h3>
+                    <p>At Walkerbay Hotels, our passion is creating unforgettable experiences for every guest who walks through our doors. From our humble beginnings to becoming one of the most trusted hospitality brands around Lake Victoria region, our commitment has always remained the same—exceptional service, warmth, and a home-away-from-home feeling.</p>
+                    <p>We believe that hospitality is more than just accommodation; it is about genuine care, comfort, and connection. Every stay with us is guided by our core values of excellence, integrity, and personalized service. Our dedicated team works tirelessly to ensure that each guest enjoys modern comfort, delicious dining experiences, and a safe, serene environment.</p>
+                    <p>As we continue to grow and expand our services, we remain committed to supporting local communities, embracing innovation, and raising the standard of hospitality in the region. Whether you are visiting for business, leisure, events, or relaxation, we are here to make your experience truly remarkable.</p>
+                    <p>Thank you for choosing Walkerbay Hotels Limited. We look forward to welcoming you and making your stay memorable.</p>
+                    <div class="ceo-signature">
+                        <p>— CEO, Walkerbay Hotels Limited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">✓</div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in every aspect of our service, from the quality of our accommodations to the attentiveness of our staff.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3>Hospitality</h3>
+                    <p>Genuine care and warmth define our approach to hospitality, ensuring every guest feels valued and welcomed.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Sustainability</h3>
+                    <p>We are committed to sustainable practices that protect our beautiful lakeside environment and support local communities.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Integrity</h3>
+                    <p>We conduct our business with honesty, transparency, and respect for our guests, employees, and partners.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Community</h3>
+                    <p>We actively support and engage with our local community, creating shared value and positive impact.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">✨</div>
+                    <h3>Innovation</h3>
+                    <p>We continuously seek new ways to enhance our guests' experiences through technology and creative solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Location</h2>
+                <p>Strategically positioned at the heart of East Africa's most scenic region</p>
+            </div>
+            <div class="location-content">
+                <div class="location-text">
+                    <p>Walkerbay Hotel offers uninterrupted views of Lake Victoria and is strategically located to provide easy access to key destinations in the region.</p>
+                    <p>Our prime location in Muhuru-Bay places us at the gateway to Tanzania borders and the last end of Kenya bordering Uganda through Migingo Islands. We are surrounded by major tourist destinations including Mugabo Caves, Thimlich Ohinga and Masai Mara.</p>
+                    
+                    <div class="location-features">
+                        <h3>Key Location Advantages:</h3>
+                        <ul>
+                            <li>45 minutes drive from Migori town</li>
+                            <li>10 minutes from Tanzania Border</li>
+                            <li>45 minutes from the Lichota Airstrip</li>
+                            <li>Close to historical Mugabo Caves</li>
+                            <li>Proximity to Thimlich Ohinga archaeological site</li>
+                            <li>Gateway to Masai Mara National Reserve</li>
+                            <li>Access to Lake Victoria fishing and boating</li>
+                            <li>Stunning views of Africa's largest lake</li>
+                        </ul>
+                    </div>
+                    
+                    <p>Whether you're visiting for business or leisure, our location provides the perfect base to explore the rich cultural heritage and natural beauty of the Lake Victoria region.</p>
+                </div>
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63839.83653515824!2d34.10745045!3d-1.06365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMDMnNDkuMSJTIDM0wrAwNic0OC44IkU!5e0!3m2!1sen!2ske!4v1234567890123!5m2!1sen!2ske" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Leadership Team</h2>
+                <p>Meet the dedicated professionals behind Walkerbay Hotel's success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/CEO.png" alt="CEO">
+                    </div>
+                    <div class="member-info">
+                        <h3>VICTOR</h3>
+                        <p class="member-role">Chief Executive Officer</p>
+                        <p>Visionary leader with over several years in hospitality management.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/CRYSTAL.png" alt="Operations Manager">
+                    </div>
+                    <div class="member-info">
+                        <h3>CRYSTAL</h3>
+                        <p class="member-role">Operations Manager</p>
+                        <p>Ensuring seamless guest experiences and operational excellence.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/WILLIAM.png" alt="COO">
+                    </div>
+                    <div class="member-info">
+                        <h3></h3>
+                        <p class="member-role">COO</p>
+                        <p>Top Business analyst..</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/MARIA.png" alt="Sales Manager">
+                    </div>
+                    <div class="member-info">
+                        <h3>MARIA</h3>
+                        <p class="member-role">Sales & Marketing Manager</p>
+                        <p>Driving business growth and building strategic partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container video-container">
+            <h2>Experience Walkerbay Hotel</h2>
+            <p>Take a virtual tour of our facilities and beautiful lakeside location</p>
+            <div class="video-wrapper">
+                <video controls poster="images/ensuite lounge.jpeg">
+                    <source src="videos/LAKEVIEW.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Walkerbay Hotel</h3>
+                    <p>Where Hospitality Meets Adventure. Experience luxury accommodation, fine dining, and exceptional service at the shores of Lake Victoria.</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="accommodation.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i>📍</i>
+                            <span>Muhuru-Bay, Migori County, Kenya</span>
+                        </li>
+                        <li>
+                            <i>📞</i>
+                            <span>+254 712 345 678</span>
+                        </li>
+                        <li>
+                            <i>✉️</i>
+                            <span>info@walkerbayhotel.co.ke</span>
+                        </li>
+                        <li>
+                            <i>🌐</i>
+                            <span>www.walkerbayhotel.co.ke</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Walkerbay Hotel Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Book Now button functionality
+        document.getElementById('book-now-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'accommodation.html';
+        });
+    </script>
+</body>
+</html>

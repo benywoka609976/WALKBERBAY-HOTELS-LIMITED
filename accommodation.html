@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation - Walkerbay Hotel Limited</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #1a3d7c;
+            --secondary-blue: #2a5ba7;
+            --accent-blue: #4a7bc8;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: var(--light-text);
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .accommodation-hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.7), rgba(26, 61, 124, 0.7)), url('images/accommodation-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 90px;
+        }
+        
+        .accommodation-hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .accommodation-hero-content p {
+            font-size: 20px;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Room Types Section */
+        .room-types {
+            background-color: var(--white);
+        }
+        
+        .room-category {
+            margin-bottom: 80px;
+        }
+        
+        .room-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .room-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+        
+        .room-header h3 {
+            color: var(--primary-blue);
+            font-size: 28px;
+        }
+        
+        .room-price {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        
+        .room-content {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .room-gallery {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .room-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .room-gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .room-gallery img.main-image {
+            grid-column: 1 / -1;
+            height: 300px;
+        }
+        
+        .room-details {
+            flex: 1;
+        }
+        
+        .room-description {
+            margin-bottom: 25px;
+        }
+        
+        .room-features {
+            margin-bottom: 25px;
+        }
+        
+        .room-features h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .feature-item::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .room-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Apartments Section */
+        .apartments {
+            background-color: var(--light-blue);
+        }
+        
+        .apartments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .apartment-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .apartment-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .apartment-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .apartment-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .apartment-card:hover .apartment-image img {
+            transform: scale(1.1);
+        }
+        
+        .apartment-content {
+            padding: 20px;
+        }
+        
+        .apartment-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        .apartment-location {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .apartment-location::before {
+            content: '📍';
+            margin-right: 5px;
+        }
+        
+        .apartment-features {
+            margin: 15px 0;
+        }
+        
+        .apartment-features ul {
+            list-style: none;
+        }
+        
+        .apartment-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .apartment-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .apartment-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin: 15px 0;
+        }
+        
+        /* Amenities Section */
+        .amenities {
+            background-color: var(--white);
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .amenity-card {
+            background-color: var(--light-blue);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .amenity-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .amenity-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-blue);
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .amenity-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background-color: var(--light-blue);
+            text-align: center;
+        }
+        
+        .booking-cta {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .booking-cta h2 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .booking-cta p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Booking Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            margin: 50px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalOpen 0.5s;
+        }
+        
+        @keyframes modalOpen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .modal-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .payment-options {
+            margin: 20px 0;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .payment-option input {
+            margin-right: 10px;
+        }
+        
+        .mpesa-info {
+            background-color: var(--light-blue);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .mpesa-info.active {
+            display: block;
+        }
+        
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow: hidden;
+        }
+        
+        .image-modal-content {
+            position: relative;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+        
+        .close-image-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .room-content {
+                flex-direction: column;
+            }
+            
+            .room-gallery {
+                order: 1;
+            }
+            
+            .room-details {
+                order: 2;
+            }
+            
+            .accommodation-hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .accommodation-hero-content p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 90px);
+                background-color: var(--white);
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .accommodation-hero {
+                height: 50vh;
+                margin-top: 90px;
+            }
+            
+            .accommodation-hero-content h2 {
+                font-size: 28px;
+            }
+            
+            .accommodation-hero-content p {
+                font-size: 16px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .room-actions {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .room-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .room-gallery img.main-image {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Walkerbay Hotel Logo">
+                <div class="logo-text">
+                    <h1>WALKERBAY HOTELS LIMITED</h1>
+                    <p>Where Hospitality Meets Adventure</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="accommodation.html" class="active">Accommodation</a></li>
+                    <li><a href="dining.html">Dining & Entertainment</a></li>
+                    <li><a href="conferences.html">Conferences</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn" id="book-now-btn">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Accommodation Hero Section -->
+    <section class="accommodation-hero">
+        <div class="container accommodation-hero-content">
+            <div>
+                <h2>Luxury Accommodation</h2>
+                <p>Experience unparalleled comfort in our carefully designed rooms and suites with stunning views of Lake Victoria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Types Section -->
+    <section class="room-types">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Rooms & Suites</h2>
+                <p>Choose from our variety of luxurious accommodations designed for your comfort and relaxation</p>
+            </div>
+            
+            <!-- Victoria Suites -->
+            <div class="room-category">
+                <div class="room-header">
+                    <h3>Victoria Suites</h3>
+                    <div class="room-price">From KES 12,000 per night</div>
+                </div>
+                <div class="room-content">
+                    <div class="room-gallery">
+                        <img src="images/lounge3.jpeg" alt="Victoria Suite" class="main-image">
+                        <img src="images/washroom2.jpeg" alt="Victoria Suite Bathroom">
+                        <img src="images/ensuite lounge.jpeg" alt="Victoria Suite View">
+                    </div>
+                    <div class="room-details">
+                        <div class="room-description">
+                            <p>Our entry-level luxury suites located on the ground floor offer stunning views of Lake Victoria. These spacious suites are perfect for guests seeking premium comfort with elegant furnishings and premium amenities.</p>
+                            <p><strong>Units Available: 2</strong></p>
+                        </div>
+                        <div class="room-features">
+                            <h4>Room Features</h4>
+                            <div class="features-grid">
+                                <div class="feature-item">King-size bed (with mosquito net)</div>
+                                <div class="feature-item">Queen-size sofa</div>
+                                <div class="feature-item">Air-conditioning</div>
+                                <div class="feature-item">Free Wi-Fi</div>
+                                <div class="feature-item">USB/Charging ports</div>
+                                <div class="feature-item">Nespresso coffee machine</div>
+                                <div class="feature-item">Bathroom with shower and bathtub</div>
+                                <div class="feature-item">Minibar with beverages</div>
+                                <div class="feature-item">Smart TV</div>
+                                <div class="feature-item">House telephone</div>
+                                <div class="feature-item">Gallery terrace</div>
+                                <div class="feature-item">24-hour room service</div>
+                            </div>
+                        </div>
+                        <div class="room-actions">
+                            <button class="btn book-room-btn" data-room="Victoria Suite">Book Now</button>
+                            <button class="btn btn-outline view-gallery-btn" data-room="victoria">View Gallery</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Standard Rooms -->
+            <div class="room-category">
+                <div class="room-header">
+                    <h3>Standard Rooms</h3>
+                    <div class="room-price">From KES 8,000 per night</div>
+                </div>
+                <div class="room-content">
+                    <div class="room-gallery">
+                        <img src="images/bedroom.jpeg" alt="Standard Room" class="main-image">
+                        <img src="images/Walkerbay Standard  Room.jpeg" alt="Standard Room Bed">
+                        <img src="images/bedroom3.jpeg" alt="Standard Room Bathroom">
+                    </div>
+                    <div class="room-details">
+                        <div class="room-description">
+                            <p>Comfortable and cozy entry-level rooms perfect for both business and leisure travelers. Our standard rooms offer all the essential amenities for a comfortable stay with the option of king-size or twin beds.</p>
+                            <p><strong>Units Available: 11 | Maximum Guests: 2</strong></p>
+                        </div>
+                        <div class="room-features">
+                            <h4>Room Features</h4>
+                            <div class="features-grid">
+                                <div class="feature-item">King-size bed or twin beds</div>
+                                <div class="feature-item">Air-conditioning</div>
+                                <div class="feature-item">Quality mattress and bed linen</div>
+                                <div class="feature-item">Mosquito net</div>
+                                <div class="feature-item">Free Wi-Fi</div>
+                                <div class="feature-item">Safety deposit box</div>
+                                <div class="feature-item">Coffee and tea-making facilities</div>
+                                <div class="feature-item">Fully equipped bathroom</div>
+                                <div class="feature-item">Hairdryer</div>
+                                <div class="feature-item">Mini fridge (on request)</div>
+                                <div class="feature-item">24-hour room service</div>
+                                <div class="feature-item">DSTV</div>
+                            </div>
+                        </div>
+                        <div class="room-actions">
+                            <button class="btn book-room-btn" data-room="Standard Room">Book Now</button>
+                            <button class="btn btn-outline view-gallery-btn" data-room="standard">View Gallery</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Four-Bedroom Villa -->
+            <div class="room-category">
+                <div class="room-header">
+                    <h3>Four-Bedroom Private Home Stays</h3>
+                    <div class="room-price">From KES 35,000 per night</div>
+                </div>
+                <div class="room-content">
+                    <div class="room-gallery">
+                        <img src="images/4BEDROOM VILLA.png" alt="Four-Bedroom Villa" class="main-image">
+                        <img src="images/ensuite lounge.jpeg" alt="Villa Living Area">
+                        <img src="images/airbnbs.jpeg" alt="Villa Outdoor Area">
+                    </div>
+                    <div class="room-details">
+                        <div class="room-description">
+                            <p>Reconnect with family and friends in the wilds of Lake Victoria with a four-bedroom holiday home in Muhuru-Bay. Combining the comforts of a luxurious residence with the elevated lifestyle of a resort.</p>
+                            <p><strong>Sleeps up to 12 guests (maximum 8 adults)</strong></p>
+                        </div>
+                        <div class="room-features">
+                            <h4>Villa Features</h4>
+                            <div class="features-grid">
+                                <div class="feature-item">Four spacious bedrooms</div>
+                                <div class="feature-item">Games room</div>
+                                <div class="feature-item">Outdoor firepit</div>
+                                <div class="feature-item">Gourmet kitchen</div>
+                                <div class="feature-item">Barbecue area</div>
+                                <div class="feature-item">Indoor and outdoor dining</div>
+                                <div class="feature-item">Private garden with lake views</div>
+                                <div class="feature-item">Living area with entertainment system</div>
+                                <div class="feature-item">En-suite bathrooms</div>
+                                <div class="feature-item">24-hour concierge service</div>
+                                <div class="feature-item">Complimentary breakfast</div>
+                                <div class="feature-item">Access to all hotel facilities</div>
+                            </div>
+                        </div>
+                        <div class="room-actions">
+                            <button class="btn book-room-btn" data-room="Four-Bedroom Villa">Book Now</button>
+                            <button class="btn btn-outline view-gallery-btn" data-room="villa">View Gallery</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apartments Section -->
+    <section class="apartments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nairobi Apartments</h2>
+                <p>Furnished apartments in prime Nairobi locations for extended stays</p>
+            </div>
+            <div class="apartments-grid">
+                <div class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="images/studio-apartment.jpg" alt="Studio Apartment">
+                    </div>
+                    <div class="apartment-content">
+                        <h3>Studio Apartment</h3>
+                        <div class="apartment-location">Kilimani, Nairobi</div>
+                        <p>Compact and efficient studio apartments perfect for solo travelers or couples. Features a combined living and sleeping area with a separate kitchenette.</p>
+                        <div class="apartment-features">
+                            <ul>
+                                <li>Combined living/sleeping area</li>
+                                <li>Kitchenette with appliances</li>
+                                <li>En-suite bathroom</li>
+                                <li>Free Wi-Fi</li>
+                                <li>DSTV</li>
+                                <li>Secure parking</li>
+                            </ul>
+                        </div>
+                        <div class="apartment-price">From KES 6,500 per night</div>
+                        <button class="btn book-room-btn" data-room="Studio Apartment">Book Now</button>
+                    </div>
+                </div>
+                <div class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="images/one-bedroom-apartment.jpg" alt="One Bedroom Apartment">
+                    </div>
+                    <div class="apartment-content">
+                        <h3>One Bedroom Apartment</h3>
+                        <div class="apartment-location">Lavington, Nairobi</div>
+                        <p>Spacious one-bedroom apartments with separate living areas, perfect for longer stays. Located in upscale residential neighborhoods.</p>
+                        <div class="apartment-features">
+                            <ul>
+                                <li>Separate bedroom</li>
+                                <li>Living area with sofa</li>
+                                <li>Fully equipped kitchen</li>
+                                <li>Dining area</li>
+                                <li>Free Wi-Fi</li>
+                                <li>DSTV</li>
+                                <li>Secure parking</li>
+                            </ul>
+                        </div>
+                        <div class="apartment-price">From KES 9,000 per night</div>
+                        <button class="btn book-room-btn" data-room="One Bedroom Apartment">Book Now</button>
+                    </div>
+                </div>
+                <div class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="images/two-bedroom-apartment.jpg" alt="Two Bedroom Apartment">
+                    </div>
+                    <div class="apartment-content">
+                        <h3>Two Bedroom Apartment</h3>
+                        <div class="apartment-location">Kilimani, Nairobi</div>
+                        <p>Luxurious two-bedroom apartments ideal for families or small groups. Features spacious living areas and modern amenities.</p>
+                        <div class="apartment-features">
+                            <ul>
+                                <li>Two separate bedrooms</li>
+                                <li>Spacious living area</li>
+                                <li>Fully equipped kitchen</li>
+                                <li>Dining area</li>
+                                <li>Two bathrooms</li>
+                                <li>Free Wi-Fi</li>
+                                <li>DSTV</li>
+                                <li>Secure parking</li>
+                            </ul>
+                        </div>
+                        <div class="apartment-price">From KES 14,000 per night</div>
+                        <button class="btn book-room-btn" data-room="Two Bedroom Apartment">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hotel Amenities</h2>
+                <p>Enjoy our premium facilities and services during your stay</p>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">🏊</div>
+                    <h3>Swimming Pool</h3>
+                    <p>Relax in our pristine swimming pool with stunning views of Lake Victoria</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">💼</div>
+                    <h3>Conference Hall</h3>
+                    <p>Host your business events in our state-of-the-art conference facilities</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🍹</div>
+                    <h3>Sports Bar & Lounge</h3>
+                    <p>Enjoy drinks and watch live sports in our vibrant bar and lounge</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🅿️</div>
+                    <h3>Secure Parking</h3>
+                    <p>Your vehicle is safe with our 24/7 monitored secure parking facility</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">📶</div>
+                    <h3>Free Wi-Fi</h3>
+                    <p>Stay connected with high-speed complimentary Wi-Fi throughout the hotel</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🏋️</div>
+                    <h3>Gymnasium</h3>
+                    <p>Maintain your fitness routine in our well-equipped gym with modern equipment</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🍽️</div>
+                    <h3>24-Hour Room Service</h3>
+                    <p>Enjoy delicious meals delivered to your room anytime, day or night</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🧳</div>
+                    <h3>Concierge Service</h3>
+                    <p>Our dedicated staff is available to assist with all your needs and requests</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-cta">
+                <h2>Ready to Book Your Stay?</h2>
+                <p>Experience the perfect blend of comfort, luxury, and adventure at Walkerbay Hotel. Book your room today and create unforgettable memories by Lake Victoria.</p>
+                <button class="btn" id="cta-book-now">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Walkerbay Hotel</h3>
+                    <p>Where Hospitality Meets Adventure. Experience luxury accommodation, fine dining, and exceptional service at the shores of Lake Victoria.</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="accommodation.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i>📍</i>
+                            <span>Muhuru-Bay, Migori County, Kenya</span>
+                        </li>
+                        <li>
+                            <i>📞</i>
+                            <span>+254 712 345 678</span>
+                        </li>
+                        <li>
+                            <i>✉️</i>
+                            <span>info@walkerbayhotel.co.ke</span>
+                        </li>
+                        <li>
+                            <i>🌐</i>
+                            <span>www.walkerbayhotel.co.ke</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Walkerbay Hotel Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Your Stay</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="booking-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="check-in">Check-in Date</label>
+                            <input type="date" id="check-in" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="check-out">Check-out Date</label>
+                            <input type="date" id="check-out" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="room-type">Room Type</label>
+                            <select id="room-type" class="form-control" required>
+                                <option value="">Select Room Type</option>
+                                <option value="Victoria Suite">Victoria Suite</option>
+                                <option value="Standard Room">Standard Room</option>
+                                <option value="Four-Bedroom Villa">Four-Bedroom Villa</option>
+                                <option value="Studio Apartment">Studio Apartment</option>
+                                <option value="One Bedroom Apartment">One Bedroom Apartment</option>
+                                <option value="Two Bedroom Apartment">Two Bedroom Apartment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" class="form-control" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="payment-options">
+                        <h4>Payment Method</h4>
+                        <div class="payment-option">
+                            <input type="radio" id="mpesa" name="payment" value="mpesa" checked>
+                            <label for="mpesa">M-Pesa</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="card" name="payment" value="card">
+                            <label for="card">Credit/Debit Card</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="pay-on-arrival" name="payment" value="pay-on-arrival">
+                            <label for="pay-on-arrival">Pay on Arrival</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mpesa-info active" id="mpesa-info">
+                        <h4>M-Pesa Payment Instructions</h4>
+                        <p>1. Go to M-Pesa on your phone</p>
+                        <p>2. Select "Lipa Na M-Pesa"</p>
+                        <p>3. Select "Pay Bill"</p>
+                        <p>4. Enter Business Number: <strong>123456</strong></p>
+                        <p>5. Enter Account Number: <strong id="mpesa-account">Your Booking ID</strong></p>
+                        <p>6. Enter the amount: <strong id="mpesa-amount">KES 0</strong></p>
+                        <p>7. Enter your M-Pesa PIN and confirm</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">Complete Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="image-modal">
+        <div class="image-modal-content">
+            <button class="close-image-modal">&times;</button>
+            <img src="" alt="" id="modal-image">
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Booking Modal
+        const bookNowBtn = document.getElementById('book-now-btn');
+        const ctaBookNowBtn = document.getElementById('cta-book-now');
+        const bookRoomBtns = document.querySelectorAll('.book-room-btn');
+        const bookingModal = document.getElementById('booking-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const roomTypeSelect = document.getElementById('room-type');
+        const mpesaInfo = document.getElementById('mpesa-info');
+        const mpesaAccount = document.getElementById('mpesa-account');
+        const mpesaAmount = document.getElementById('mpesa-amount');
+        
+        // Image Modal
+        const imageModal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        const closeImageModal = document.querySelector('.close-image-modal');
+        const viewGalleryBtns = document.querySelectorAll('.view-gallery-btn');
+        
+        // Function to open booking modal
+        function openBookingModal(roomType = '') {
+            if (roomType) {
+                roomTypeSelect.value = roomType;
+            }
+            bookingModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Event listeners for booking buttons
+        bookNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openBookingModal();
+        });
+        
+        ctaBookNowBtn.addEventListener('click', function() {
+            openBookingModal();
+        });
+        
+        bookRoomBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const roomType = this.getAttribute('data-room');
+                openBookingModal(roomType);
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            bookingModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === bookingModal) {
+                bookingModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === imageModal) {
+                imageModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Payment method toggle
+        const paymentOptions = document.querySelectorAll('input[name="payment"]');
+        paymentOptions.forEach(option => {
+            option.addEventListener('change', function() {
+                if (this.value === 'mpesa') {
+                    mpesaInfo.classList.add('active');
+                } else {
+                    mpesaInfo.classList.remove('active');
+                }
+            });
+        });
+        
+        // Generate random booking ID for M-Pesa
+        function generateBookingId() {
+            return 'WB' + Math.floor(100000 + Math.random() * 900000);
+        }
+        
+        // Update M-Pesa account number with booking ID
+        mpesaAccount.textContent = generateBookingId();
+        
+        // Calculate amount based on room type and duration
+        function calculateAmount() {
+            const roomType = roomTypeSelect.value;
+            const checkIn = new Date(document.getElementById('check-in').value);
+            const checkOut = new Date(document.getElementById('check-out').value);
+            
+            if (!roomType || !checkIn || !checkOut) return;
+            
+            // Calculate nights
+            const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+            if (nights <= 0) return;
+            
+            // Base prices
+            let basePrice = 0;
+            switch(roomType) {
+                case 'Victoria Suite':
+                    basePrice = 12000;
+                    break;
+                case 'Standard Room':
+                    basePrice = 8000;
+                    break;
+                case 'Four-Bedroom Villa':
+                    basePrice = 35000;
+                    break;
+                case 'Studio Apartment':
+                    basePrice = 6500;
+                    break;
+                case 'One Bedroom Apartment':
+                    basePrice = 9000;
+                    break;
+                case 'Two Bedroom Apartment':
+                    basePrice = 14000;
+                    break;
+            }
+            
+            const totalAmount = basePrice * nights;
+            mpesaAmount.textContent = 'KES ' + totalAmount.toLocaleString();
+        }
+        
+        // Event listeners for amount calculation
+        roomTypeSelect.addEventListener('change', calculateAmount);
+        document.getElementById('check-in').addEventListener('change', calculateAmount);
+        document.getElementById('check-out').addEventListener('change', calculateAmount);
+        
+        // Booking form submission
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would send data to a backend
+            // For demonstration, we'll show a success message
+            alert('Booking request submitted successfully! You will receive a confirmation message shortly.');
+            bookingModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Reset form
+            this.reset();
+            mpesaAccount.textContent = generateBookingId();
+            mpesaAmount.textContent = 'KES 0';
+        });
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+        
+        // Image gallery functionality
+        const roomImages = document.querySelectorAll('.room-gallery img');
+        roomImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modalImage.src = this.src;
+                modalImage.alt = this.alt;
+                imageModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // View gallery buttons
+        viewGalleryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const roomType = this.getAttribute('data-room');
+                // In a real implementation, this would open a gallery specific to the room type
+                // For now, we'll just open the first image of that room
+                const roomGallery = this.closest('.room-content').querySelector('.room-gallery');
+                const mainImage = roomGallery.querySelector('.main-image');
+                modalImage.src = mainImage.src;
+                modalImage.alt = mainImage.alt;
+                imageModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close image modal
+        closeImageModal.addEventListener('click', function() {
+            imageModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walkerbay Hotel Limited - Where Hospitality Meets Adventure</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #1a3d7c;
+            --secondary-blue: #2a5ba7;
+            --accent-blue: #4a7bc8;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: var(--light-text);
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.7), rgba(26, 61, 124, 0.7)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 90px;
+        }
+        
+        .hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light-blue);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* Rooms Section */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .room-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .room-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .room-content {
+            padding: 20px;
+        }
+        
+        .room-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        .room-features {
+            margin: 15px 0;
+        }
+        
+        .room-features ul {
+            list-style: none;
+        }
+        
+        .room-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .room-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .room-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin: 15px 0;
+        }
+        
+        /* Video Section */
+        .video-section {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-container h2 {
+            margin-bottom: 30px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Video Resizing Styles */
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .resize-btn {
+            background-color: var(--light-blue);
+            border: 1px solid var(--accent-blue);
+            color: var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .resize-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .resize-btn.active {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .resize-btn i {
+            font-size: 14px;
+        }
+
+        /* Video Size Classes */
+        .video-small {
+            max-width: 500px;
+        }
+
+        .video-medium {
+            max-width: 700px;
+        }
+
+        .video-large {
+            max-width: 100%;
+        }
+
+        .video-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 3000;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-fullscreen .video-wrapper {
+            width: 90%;
+            height: 80%;
+            max-width: none;
+            padding-bottom: 0;
+        }
+
+        .video-fullscreen .video-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3001;
+        }
+
+        .video-fullscreen .close-fullscreen {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3001;
+        }
+
+        .video-fullscreen .close-fullscreen:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light-blue);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Booking Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            margin: 50px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalOpen 0.5s;
+        }
+        
+        @keyframes modalOpen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .modal-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .payment-options {
+            margin: 20px 0;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .payment-option input {
+            margin-right: 10px;
+        }
+        
+        .mpesa-info {
+            background-color: var(--light-blue);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .mpesa-info.active {
+            display: block;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 90px);
+                background-color: var(--white);
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .hero {
+                height: 60vh;
+                margin-top: 90px;
+            }
+            
+            .hero-content h2 {
+                font-size: 28px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .video-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .resize-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Walkerbay Hotel Logo">
+                <div class="logo-text">
+                    <h1>WALKERBAY HOTELS LIMITED</h1>
+                    <p>Where Hospitality Meets Adventure</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="accommodation.html">Accommodation</a></li>
+                    <li><a href="dining.html">Dining & Entertainment</a></li>
+                    <li><a href="conferences.html">Conferences</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn" id="book-now-btn">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div>
+                <h2>Welcome to Walkerbay Hotel</h2>
+                <p>Located in Muhuru-Bay, Migori County - Kenya, an oasis of tranquility on Lake Victoria's gateway to Tanzania borders and last end of Kenya bordering Uganda through Migingo Islands.</p>
+                <a href="accommodation.html" class="btn">Explore Our Rooms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Walkerbay Hotel</h2>
+                <p>Discover the perfect blend of comfort, nature, and adventure at our luxurious lakeside resort</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Walkerbay Hotel comprises of 11 well-appointed Standard guest rooms and 2 suites, 2 restaurants, 2 bars, 24-hour In-Room Dining service, and a well-equipped gymnasium. Walkerbay Hotel provides the perfect venue for meetings and events with more than 1500 sqm of meeting and banquet space, perfect for seminars, large conferences, cocktail events and corporate dinners.</p>
+                    <p>The property offers uninterrupted views of Lake Victoria, The Walkerbay Hotel is located only 45 minutes drive from Migori town, 10 minutes from Tanzania Border and 45 minutes from the Lichota Airstrip, the historical Mugabo Caves, Thimlich Ohinga.</p>
+                    <a href="about.html" class="btn" style="margin-top: 20px;">Learn More</a>
+                </div>
+                <div class="about-image">
+                    <img src="images/view1.jpeg" alt="Walkerbay Hotel Exterior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section 1 - Hotel Experience -->
+    <section class="video-section">
+        <div class="container video-container">
+            <h2>Experience Walkerbay Hotel</h2>
+            <p>Take a virtual tour of our luxurious facilities and beautiful lakeside location</p>
+            <div class="video-wrapper video-medium" id="video-wrapper-1">
+                <video controls poster="images/logo.png" id="main-video-1">
+                    <source src="videos/INTRO.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-controls">
+                <button class="resize-btn" id="small-video-1">
+                    <i>⊖</i> Small
+                </button>
+                <button class="resize-btn active" id="medium-video-1">
+                    <i>⧉</i> Medium
+                </button>
+                <button class="resize-btn" id="large-video-1">
+                    <i>⊕</i> Large
+                </button>
+                <button class="resize-btn" id="fullscreen-video-1">
+                    <i>⛶</i> Fullscreen
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Experience luxury and comfort with our premium amenities and services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/SWIMMING POOL.png" alt="Swimming Pool">
+                    </div>
+                    <div class="service-content">
+                        <h3>Swimming Pool</h3>
+                        <p>Relax and unwind in our pristine swimming pool with stunning views of Lake Victoria.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/CONFERENCE-HALL.png" alt="Conference Hall">
+                    </div>
+                    <div class="service-content">
+                        <h3>Conference Hall</h3>
+                        <p>Host your corporate events in our state-of-the-art conference facilities.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/OUTDOOR BAR2.png" alt="Sports Bar & Lounge">
+                    </div>
+                    <div class="service-content">
+                        <h3>Sports Bar & Lounge</h3>
+                        <p>Enjoy your favorite drinks and watch live sports in our vibrant bar and lounge.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/SECURE PARKING.png" alt="Secure Parking">
+                    </div>
+                    <div class="service-content">
+                        <h3>Secure Parking</h3>
+                        <p>Your vehicle is safe with our 24/7 monitored secure parking facility.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/FREE WIFI.png" alt="Free Wi-Fi">
+                    </div>
+                    <div class="service-content">
+                        <h3>Free Wi-Fi</h3>
+                        <p>Stay connected with our high-speed complimentary Wi-Fi throughout the hotel.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/GYMNASIUM.png" alt="Gymnasium">
+                    </div>
+                    <div class="service-content">
+                        <h3>Gymnasium</h3>
+                        <p>Maintain your fitness routine in our well-equipped gym with modern equipment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Accommodation</h2>
+                <p>Choose from our variety of luxurious rooms and suites designed for your comfort</p>
+            </div>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="images/bedroom 5.jpeg" alt="Victoria Suite">
+                    </div>
+                    <div class="room-content">
+                        <h3>Victoria Suites</h3>
+                        <p>Luxurious entry-level suites with stunning lake views and premium amenities.</p>
+                        <div class="room-features">
+                            <ul>
+                                <li>King-size bed with mosquito net</li>
+                                <li>Queen-size sofa</li>
+                                <li>Air-conditioning</li>
+                                <li>Free Wi-Fi</li>
+                                <li>Nespresso coffee machine</li>
+                                <li>Fully equipped bathroom with bathtub</li>
+                                <li>Minibar and Smart TV</li>
+                                <li>Gallery terrace</li>
+                            </ul>
+                        </div>
+                        <div class="room-price">From KES 12,000 per night</div>
+                        <a href="#" class="btn book-room-btn" data-room="Victoria Suite">Book Now</a>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="images/Walkerbay Standard  Room.jpeg" alt="Standard Room">
+                    </div>
+                    <div class="room-content">
+                        <h3>Standard Rooms</h3>
+                        <p>Comfortable and cozy rooms perfect for business or leisure travelers.</p>
+                        <div class="room-features">
+                            <ul>
+                                <li>King-size bed or twin beds</li>
+                                <li>Air-conditioning</li>
+                                <li>Quality mattress and bed linen</li>
+                                <li>Mosquito net</li>
+                                <li>Free Wi-Fi</li>
+                                <li>Coffee and tea-making facilities</li>
+                                <li>Fully equipped bathroom</li>
+                                <li>Mini fridge (on request)</li>
+                            </ul>
+                        </div>
+                        <div class="room-price">From KES 8,000 per night</div>
+                        <a href="#" class="btn book-room-btn" data-room="Standard Room">Book Now</a>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="images/4BEDROOM VILLA.png" alt="Four-Bedroom Villa">
+                    </div>
+                    <div class="room-content">
+                        <h3>Four-Bedroom Villa</h3>
+                        <p>Spacious private home ideal for families and groups with exclusive amenities.</p>
+                        <div class="room-features">
+                            <ul>
+                                <li>Four bedrooms sleeping up to 12 guests</li>
+                                <li>Games room and firepit</li>
+                                <li>Gourmet kitchen and barbecue</li>
+                                <li>Indoor and outdoor dining spaces</li>
+                                <li>Private garden with lake views</li>
+                                <li>24-hour concierge service</li>
+                                <li>Complimentary breakfast</li>
+                                <li>Access to all hotel facilities</li>
+                            </ul>
+                        </div>
+                        <div class="room-price">From KES 35,000 per night</div>
+                        <a href="#" class="btn book-room-btn" data-room="Four-Bedroom Villa">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section 2 - Dining Experience -->
+    <section class="video-section" style="background-color: var(--secondary-blue);">
+        <div class="container video-container">
+            <h2>High Quality AIRBNBS</h2>
+            <p>Experience our diverse accommodation options.</p>
+            <div class="video-wrapper video-medium" id="video-wrapper-2">
+                <video controls poster="images/airbnbs.jpeg" id="main-video-2">
+                    <source src="videos/AIRBNB.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-controls">
+                <button class="resize-btn" id="small-video-2">
+                    <i>⊖</i> Small
+                </button>
+                <button class="resize-btn active" id="medium-video-2">
+                    <i>⧉</i> Medium
+                </button>
+                <button class="resize-btn" id="large-video-2">
+                    <i>⊕</i> Large
+                </button>
+                <button class="resize-btn" id="fullscreen-video-2">
+                    <i>⛶</i> Fullscreen
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Guests Say</h2>
+                <p>Discover why our guests keep coming back to Walkerbay Hotel</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The views of Lake Victoria are absolutely breathtaking. Combined with the exceptional service and luxurious accommodations, my stay at Walkerbay Hotel was unforgettable."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/James Kariuki.png" alt="Guest">
+                        </div>
+                        <div class="author-info">
+                            <h4>James Kariuki</h4>
+                            <p>Nairobi, Kenya</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "We hosted our annual corporate retreat at Walkerbay Hotel and were impressed by their conference facilities and professional staff. The lakeside location provided the perfect backdrop for productive meetings."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/sarah johnson.png" alt="Guest">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, Tech Solutions Ltd</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The Four-Bedroom Villa was perfect for our family reunion. The kids loved the games room while we enjoyed the peaceful evenings by the firepit. Truly a home away from home!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/michael otieno.png" alt="Guest">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Otieno</h4>
+                            <p>Kisumu, Kenya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section 3 - Lake Victoria Experience -->
+    <section class="video-section" style="background-color: var(--accent-blue);">
+        <div class="container video-container">
+            <h2>Lake Victoria Experience</h2>
+            <p>Discover the beauty and adventure of Africa's largest lake</p>
+            <div class="video-wrapper video-medium" id="video-wrapper-3">
+                <video controls poster="images/beachview.jpeg" id="main-video-3">
+                    <source src="videos/LAKE EXPERIENCE.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-controls">
+                <button class="resize-btn" id="small-video-3">
+                    <i>⊖</i> Small
+                </button>
+                <button class="resize-btn active" id="medium-video-3">
+                    <i>⧉</i> Medium
+                </button>
+                <button class="resize-btn" id="large-video-3">
+                    <i>⊕</i> Large
+                </button>
+                <button class="resize-btn" id="fullscreen-video-3">
+                    <i>⛶</i> Fullscreen
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Walkerbay Hotel</h3>
+                    <p>Where Hospitality Meets Adventure. Experience luxury accommodation, fine dining, and exceptional service at the shores of Lake Victoria.</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="accommodation.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i>📍</i>
+                            <span>Muhuru-Bay, Migori County, Kenya</span>
+                        </li>
+                        <li>
+                            <i>📞</i>
+                            <span>+254 712 345 678</span>
+                        </li>
+                        <li>
+                            <i>✉️</i>
+                            <span>info@walkerbayhotel.co.ke</span>
+                        </li>
+                        <li>
+                            <i>🌐</i>
+                            <span>www.walkerbayhotel.co.ke</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Walkerbay Hotel Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Your Stay</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="booking-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="check-in">Check-in Date</label>
+                            <input type="date" id="check-in" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="check-out">Check-out Date</label>
+                            <input type="date" id="check-out" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="room-type">Room Type</label>
+                            <select id="room-type" class="form-control" required>
+                                <option value="">Select Room Type</option>
+                                <option value="Victoria Suite">Victoria Suite</option>
+                                <option value="Standard Room">Standard Room</option>
+                                <option value="Four-Bedroom Villa">Four-Bedroom Villa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" class="form-control" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="payment-options">
+                        <h4>Payment Method</h4>
+                        <div class="payment-option">
+                            <input type="radio" id="mpesa" name="payment" value="mpesa" checked>
+                            <label for="mpesa">M-Pesa</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="card" name="payment" value="card">
+                            <label for="card">Credit/Debit Card</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="pay-on-arrival" name="payment" value="pay-on-arrival">
+                            <label for="pay-on-arrival">Pay on Arrival</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mpesa-info active" id="mpesa-info">
+                        <h4>M-Pesa Payment Instructions</h4>
+                        <p>1. Go to M-Pesa on your phone</p>
+                        <p>2. Select "Lipa Na M-Pesa"</p>
+                        <p>3. Select "Pay Bill"</p>
+                        <p>4. Enter Business Number: <strong>123456</strong></p>
+                        <p>5. Enter Account Number: <strong id="mpesa-account">Your Booking ID</strong></p>
+                        <p>6. Enter the amount: <strong id="mpesa-amount">KES 0</strong></p>
+                        <p>7. Enter your M-Pesa PIN and confirm</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">Complete Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Booking Modal
+        const bookNowBtn = document.getElementById('book-now-btn');
+        const bookRoomBtns = document.querySelectorAll('.book-room-btn');
+        const bookingModal = document.getElementById('booking-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const roomTypeSelect = document.getElementById('room-type');
+        const mpesaInfo = document.getElementById('mpesa-info');
+        const mpesaAccount = document.getElementById('mpesa-account');
+        const mpesaAmount = document.getElementById('mpesa-amount');
+        
+        // Function to open booking modal
+        function openBookingModal(roomType = '') {
+            if (roomType) {
+                roomTypeSelect.value = roomType;
+            }
+            bookingModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Event listeners for booking buttons
+        bookNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openBookingModal();
+        });
+        
+        bookRoomBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const roomType = this.getAttribute('data-room');
+                openBookingModal(roomType);
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            bookingModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === bookingModal) {
+                bookingModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Payment method toggle
+        const paymentOptions = document.querySelectorAll('input[name="payment"]');
+        paymentOptions.forEach(option => {
+            option.addEventListener('change', function() {
+                if (this.value === 'mpesa') {
+                    mpesaInfo.classList.add('active');
+                } else {
+                    mpesaInfo.classList.remove('active');
+                }
+            });
+        });
+        
+        // Generate random booking ID for M-Pesa
+        function generateBookingId() {
+            return 'WB' + Math.floor(100000 + Math.random() * 900000);
+        }
+        
+        // Update M-Pesa account number with booking ID
+        mpesaAccount.textContent = generateBookingId();
+        
+        // Calculate amount based on room type and duration
+        function calculateAmount() {
+            const roomType = roomTypeSelect.value;
+            const checkIn = new Date(document.getElementById('check-in').value);
+            const checkOut = new Date(document.getElementById('check-out').value);
+            
+            if (!roomType || !checkIn || !checkOut) return;
+            
+            // Calculate nights
+            const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+            if (nights <= 0) return;
+            
+            // Base prices
+            let basePrice = 0;
+            switch(roomType) {
+                case 'Victoria Suite':
+                    basePrice = 12000;
+                    break;
+                case 'Standard Room':
+                    basePrice = 8000;
+                    break;
+                case 'Four-Bedroom Villa':
+                    basePrice = 35000;
+                    break;
+            }
+            
+            const totalAmount = basePrice * nights;
+            mpesaAmount.textContent = 'KES ' + totalAmount.toLocaleString();
+        }
+        
+        // Event listeners for amount calculation
+        roomTypeSelect.addEventListener('change', calculateAmount);
+        document.getElementById('check-in').addEventListener('change', calculateAmount);
+        document.getElementById('check-out').addEventListener('change', calculateAmount);
+        
+        // Booking form submission
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would send data to a backend
+            // For demonstration, we'll show a success message
+            alert('Booking request submitted successfully! You will receive a confirmation message shortly.');
+            bookingModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Reset form
+            this.reset();
+            mpesaAccount.textContent = generateBookingId();
+            mpesaAmount.textContent = 'KES 0';
+        });
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Video Resizing Functionality for all three videos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all three videos
+            initializeVideoResizing(1);
+            initializeVideoResizing(2);
+            initializeVideoResizing(3);
+            
+            function initializeVideoResizing(videoNumber) {
+                const videoWrapper = document.getElementById(`video-wrapper-${videoNumber}`);
+                const mainVideo = document.getElementById(`main-video-${videoNumber}`);
+                const smallBtn = document.getElementById(`small-video-${videoNumber}`);
+                const mediumBtn = document.getElementById(`medium-video-${videoNumber}`);
+                const largeBtn = document.getElementById(`large-video-${videoNumber}`);
+                const fullscreenBtn = document.getElementById(`fullscreen-video-${videoNumber}`);
+                
+                // Set default size
+                videoWrapper.classList.add('video-medium');
+                
+                // Small video size
+                smallBtn.addEventListener('click', function() {
+                    videoWrapper.classList.remove('video-medium', 'video-large');
+                    videoWrapper.classList.add('video-small');
+                    updateActiveButton(smallBtn, videoNumber);
+                });
+                
+                // Medium video size
+                mediumBtn.addEventListener('click', function() {
+                    videoWrapper.classList.remove('video-small', 'video-large');
+                    videoWrapper.classList.add('video-medium');
+                    updateActiveButton(mediumBtn, videoNumber);
+                });
+                
+                // Large video size
+                largeBtn.addEventListener('click', function() {
+                    videoWrapper.classList.remove('video-small', 'video-medium');
+                    videoWrapper.classList.add('video-large');
+                    updateActiveButton(largeBtn, videoNumber);
+                });
+                
+                // Fullscreen video
+                fullscreenBtn.addEventListener('click', function() {
+                    // Create fullscreen overlay
+                    const fullscreenOverlay = document.createElement('div');
+                    fullscreenOverlay.className = 'video-fullscreen';
+                    
+                    // Clone the video wrapper
+                    const clonedVideoWrapper = videoWrapper.cloneNode(true);
+                    const clonedVideo = clonedVideoWrapper.querySelector('video');
+                    
+                    // Copy current time from original video
+                    if (mainVideo) {
+                        clonedVideo.currentTime = mainVideo.currentTime;
+                    }
+                    
+                    // Add close button
+                    const closeBtn = document.createElement('button');
+                    closeBtn.className = 'close-fullscreen';
+                    closeBtn.innerHTML = '×';
+                    
+                    // Add resize controls for fullscreen
+                    const fullscreenControls = document.createElement('div');
+                    fullscreenControls.className = 'video-controls';
+                    fullscreenControls.innerHTML = `
+                        <button class="resize-btn fullscreen-small">
+                            <i>⊖</i> Small
+                        </button>
+                        <button class="resize-btn fullscreen-medium">
+                            <i>⧉</i> Medium
+                        </button>
+                        <button class="resize-btn fullscreen-large">
+                            <i>⊕</i> Large
+                        </button>
+                        <button class="resize-btn exit-fullscreen">
+                            <i>⛶</i> Exit
+                        </button>
+                    `;
+                    
+                    // Add elements to fullscreen overlay
+                    fullscreenOverlay.appendChild(clonedVideoWrapper);
+                    fullscreenOverlay.appendChild(closeBtn);
+                    fullscreenOverlay.appendChild(fullscreenControls);
+                    
+                    // Add to body
+                    document.body.appendChild(fullscreenOverlay);
+                    
+                    // Play video in fullscreen
+                    if (clonedVideo) {
+                        clonedVideo.play();
+                    }
+                    
+                    // Close fullscreen functionality
+                    closeBtn.addEventListener('click', closeFullscreen);
+                    
+                    // Exit fullscreen button
+                    const exitBtn = fullscreenOverlay.querySelector('.exit-fullscreen');
+                    exitBtn.addEventListener('click', closeFullscreen);
+                    
+                    // Fullscreen resize buttons
+                    const fullscreenSmallBtn = fullscreenOverlay.querySelector('.fullscreen-small');
+                    const fullscreenMediumBtn = fullscreenOverlay.querySelector('.fullscreen-medium');
+                    const fullscreenLargeBtn = fullscreenOverlay.querySelector('.fullscreen-large');
+                    
+                    fullscreenSmallBtn.addEventListener('click', function() {
+                        clonedVideoWrapper.classList.remove('video-medium', 'video-large');
+                        clonedVideoWrapper.classList.add('video-small');
+                        updateActiveButton(fullscreenSmallBtn, null, fullscreenControls);
+                    });
+                    
+                    fullscreenMediumBtn.addEventListener('click', function() {
+                        clonedVideoWrapper.classList.remove('video-small', 'video-large');
+                        clonedVideoWrapper.classList.add('video-medium');
+                        updateActiveButton(fullscreenMediumBtn, null, fullscreenControls);
+                    });
+                    
+                    fullscreenLargeBtn.addEventListener('click', function() {
+                        clonedVideoWrapper.classList.remove('video-small', 'video-medium');
+                        clonedVideoWrapper.classList.add('video-large');
+                        updateActiveButton(fullscreenLargeBtn, null, fullscreenControls);
+                    });
+                    
+                    // Set initial size in fullscreen
+                    clonedVideoWrapper.classList.remove('video-small', 'video-medium', 'video-large');
+                    clonedVideoWrapper.classList.add('video-large');
+                    updateActiveButton(fullscreenLargeBtn, null, fullscreenControls);
+                    
+                    // Close on escape key
+                    document.addEventListener('keydown', function escapeHandler(e) {
+                        if (e.key === 'Escape') {
+                            closeFullscreen();
+                            document.removeEventListener('keydown', escapeHandler);
+                        }
+                    });
+                    
+                    function closeFullscreen() {
+                        // Update original video time
+                        if (mainVideo && clonedVideo) {
+                            mainVideo.currentTime = clonedVideo.currentTime;
+                        }
+                        
+                        // Remove fullscreen overlay
+                        if (document.body.contains(fullscreenOverlay)) {
+                            document.body.removeChild(fullscreenOverlay);
+                        }
+                    }
+                });
+                
+                // Initialize active button
+                updateActiveButton(mediumBtn, videoNumber);
+            }
+            
+            // Helper function to update active button
+            function updateActiveButton(activeBtn, videoNumber = null, container = document) {
+                let buttons;
+                
+                if (videoNumber) {
+                    // For regular video controls
+                    buttons = container.querySelectorAll(`#small-video-${videoNumber}, #medium-video-${videoNumber}, #large-video-${videoNumber}, #fullscreen-video-${videoNumber}`);
+                } else {
+                    // For fullscreen controls
+                    buttons = container.querySelectorAll('.resize-btn');
+                }
+                
+                // Remove active class from all buttons
+                buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                activeBtn.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

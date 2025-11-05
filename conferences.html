@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferences & Events - Walkerbay Hotel Limited</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #1a3d7c;
+            --secondary-blue: #2a5ba7;
+            --accent-blue: #4a7bc8;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: var(--light-text);
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .conferences-hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.7), rgba(26, 61, 124, 0.7)), url('images/conference-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 90px;
+        }
+        
+        .conferences-hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .conferences-hero-content p {
+            font-size: 20px;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Conference Facilities Section */
+        .facilities {
+            background-color: var(--white);
+        }
+        
+        .facility-main {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .facility-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facility-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .facility-details {
+            flex: 1;
+        }
+        
+        .facility-details h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .facility-features {
+            margin: 25px 0;
+        }
+        
+        .facility-features ul {
+            list-style: none;
+        }
+        
+        .facility-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .facility-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .capacity-info {
+            background-color: var(--light-blue);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        .capacity-info h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        .additional-facilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .facility-card {
+            background-color: var(--light-blue);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .facility-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-blue);
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .facility-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* Corporate Packages Section */
+        .packages {
+            background-color: var(--light-blue);
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .package-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .package-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .package-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .package-price {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .package-price span {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        
+        .package-content {
+            padding: 25px;
+        }
+        
+        .package-features {
+            margin: 20px 0;
+        }
+        
+        .package-features ul {
+            list-style: none;
+        }
+        
+        .package-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* Team Building Section */
+        .team-building {
+            background-color: var(--white);
+        }
+        
+        .team-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        
+        .team-content:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .team-text {
+            flex: 1;
+        }
+        
+        .team-text h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .team-features {
+            margin: 20px 0;
+        }
+        
+        .team-features ul {
+            list-style: none;
+        }
+        
+        .team-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .team-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .team-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Outdoor Catering Section */
+        .catering {
+            background-color: var(--light-blue);
+        }
+        
+        .catering-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .catering-text {
+            flex: 1;
+        }
+        
+        .catering-text h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .catering-features {
+            margin: 20px 0;
+        }
+        
+        .catering-features ul {
+            list-style: none;
+        }
+        
+        .catering-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .catering-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .catering-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .catering-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Event Types Section */
+        .event-types {
+            background-color: var(--white);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .event-card {
+            background-color: var(--light-blue);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .event-card:hover .event-image img {
+            transform: scale(1.1);
+        }
+        
+        .event-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .event-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light-blue);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--accent-blue);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Inquiry Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            margin: 50px auto;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalOpen 0.5s;
+        }
+        
+        @keyframes modalOpen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .modal-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .facility-main,
+            .team-content,
+            .catering-content {
+                flex-direction: column;
+            }
+            
+            .team-content:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .conferences-hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .conferences-hero-content p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 90px);
+                background-color: var(--white);
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .conferences-hero {
+                height: 50vh;
+                margin-top: 90px;
+            }
+            
+            .conferences-hero-content h2 {
+                font-size: 28px;
+            }
+            
+            .conferences-hero-content p {
+                font-size: 16px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .packages-grid,
+            .events-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Walkerbay Hotel Logo">
+                <div class="logo-text">
+                    <h1>WALKERBAY HOTELS LIMITED</h1>
+                    <p>Where Hospitality Meets Adventure</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="accommodation.html">Accommodation</a></li>
+                    <li><a href="dining.html">Dining & Entertainment</a></li>
+                    <li><a href="conferences.html" class="active">Conferences</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn" id="book-now-btn">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conferences Hero Section -->
+    <section class="conferences-hero">
+        <div class="container conferences-hero-content">
+            <div>
+                <h2>Conferences & Corporate Events</h2>
+                <p>Host your next business event at our state-of-the-art facilities with stunning views of Lake Victoria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conference Facilities Section -->
+    <section class="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Conference Facilities</h2>
+                <p>Modern meeting spaces equipped with the latest technology for successful events</p>
+            </div>
+            
+            <div class="facility-main">
+                <div class="facility-image">
+                    <img src="images/conference-hall.jpg" alt="Main Conference Hall">
+                </div>
+                <div class="facility-details">
+                    <h3>Main Conference Hall</h3>
+                    <p>Our premier conference facility offers a spacious and versatile environment for meetings, seminars, and large conferences. With over 1500 sqm of meeting and banquet space, we can accommodate events of various sizes and formats.</p>
+                    
+                    <div class="facility-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Capacity: 100-200 persons</li>
+                            <li>High-speed Wi-Fi throughout</li>
+                            <li>State-of-the-art audio-visual equipment</li>
+                            <li>Multiple projection screens</li>
+                            <li>Professional sound system</li>
+                            <li>Adjustable lighting system</li>
+                            <li>Dedicated event coordinator</li>
+                            <li>Flexible seating arrangements</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="capacity-info">
+                        <h4>Room Configurations:</h4>
+                        <p><strong>Theater Style:</strong> Up to 200 persons</p>
+                        <p><strong>Classroom Style:</strong> Up to 120 persons</p>
+                        <p><strong>Boardroom Style:</strong> Up to 40 persons</p>
+                        <p><strong>U-Shape:</strong> Up to 50 persons</p>
+                        <p><strong>Banquet Style:</strong> Up to 150 persons</p>
+                    </div>
+                    
+                    <button class="btn inquiry-btn" data-service="Conference Hall">Request Information</button>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h3>Additional Meeting Spaces</h3>
+            </div>
+            
+            <div class="additional-facilities">
+                <div class="facility-card">
+                    <div class="facility-icon">💼</div>
+                    <h3>Executive Boardroom</h3>
+                    <p>Ideal for high-level meetings and small conferences with capacity for up to 20 persons. Features premium furnishings and advanced technology.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">👥</div>
+                    <h3>Breakout Rooms</h3>
+                    <p>Smaller meeting spaces perfect for workshops, training sessions, or breakout groups during larger conferences. Multiple rooms available.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🌅</div>
+                    <h3>Lakeside Pavilion</h3>
+                    <p>Outdoor event space with stunning views of Lake Victoria. Perfect for cocktail receptions, team building activities, and outdoor dining.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Corporate Packages</h2>
+                <p>Tailored packages designed to meet the specific needs of NGOs, SACCOs, companies, and institutions</p>
+            </div>
+            
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Full Day Conference</h3>
+                        <div class="package-price">KES 2,500 <span>per person</span></div>
+                    </div>
+                    <div class="package-content">
+                        <p>Comprehensive package for full-day meetings and conferences</p>
+                        <div class="package-features">
+                            <ul>
+                                <li>Conference room rental (8 hours)</li>
+                                <li>Standard AV equipment</li>
+                                <li>Morning and afternoon tea breaks</li>
+                                <li>Buffet lunch</li>
+                                <li>Notepads and pens</li>
+                                <li>Complimentary water</li>
+                                <li>Wi-Fi access</li>
+                                <li>Dedicated event coordinator</li>
+                            </ul>
+                        </div>
+                        <button class="btn inquiry-btn" data-service="Full Day Conference">Inquire Now</button>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Half Day Meeting</h3>
+                        <div class="package-price">KES 1,800 <span>per person</span></div>
+                    </div>
+                    <div class="package-content">
+                        <p>Perfect for shorter meetings, training sessions, or workshops</p>
+                        <div class="package-features">
+                            <ul>
+                                <li>Meeting room rental (4 hours)</li>
+                                <li>Basic AV equipment</li>
+                                <li>Tea/coffee break</li>
+                                <li>Light refreshments</li>
+                                <li>Notepads and pens</li>
+                                <li>Complimentary water</li>
+                                <li>Wi-Fi access</li>
+                            </ul>
+                        </div>
+                        <button class="btn inquiry-btn" data-service="Half Day Meeting">Inquire Now</button>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Executive Retreat</h3>
+                        <div class="package-price">KES 15,000 <span>per person</span></div>
+                    </div>
+                    <div class="package-content">
+                        <p>Luxury package for executive meetings and strategic planning sessions</p>
+                        <div class="package-features">
+                            <ul>
+                                <li>Executive boardroom</li>
+                                <li>Premium AV equipment</li>
+                                <li>Gourmet catering throughout</li>
+                                <li>Accommodation in Victoria Suite</li>
+                                <li>Team building activities</li>
+                                <li>Spa treatment voucher</li>
+                                <li>Dedicated butler service</li>
+                                <li>Lakeside dinner</li>
+                            </ul>
+                        </div>
+                        <button class="btn inquiry-btn" data-service="Executive Retreat">Inquire Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 50px;">
+                <h3>Customized Solutions</h3>
+                <p>We understand that every organization has unique requirements. Contact us to create a bespoke package tailored to your specific needs, budget, and objectives.</p>
+                <button class="btn inquiry-btn" data-service="Custom Package">Request Custom Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Building Section -->
+    <section class="team-building">
+        <div class="container">
+            <div class="section-title">
+                <h2>Team Building & Corporate Retreats</h2>
+                <p>Strengthen team bonds and boost morale with our engaging team building activities</p>
+            </div>
+            
+            <div class="team-content">
+                <div class="team-text">
+                    <h3>Adventure Team Building</h3>
+                    <p>Take advantage of our unique lakeside location with adventure-based team building activities designed to challenge and inspire your team while fostering collaboration and communication.</p>
+                    <div class="team-features">
+                        <ul>
+                            <li>Lakeside obstacle courses</li>
+                            <li>Team sailing and boating challenges</li>
+                            <li>Beach volleyball tournaments</li>
+                            <li>Treasure hunts along the shore</li>
+                            <li>Fishing competitions</li>
+                            <li>Sunset team cruises</li>
+                        </ul>
+                    </div>
+                    <button class="btn inquiry-btn" data-service="Adventure Team Building">Learn More</button>
+                </div>
+                <div class="team-image">
+                    <img src="images/team-building-1.jpg" alt="Adventure Team Building">
+                </div>
+            </div>
+            
+            <div class="team-content">
+                <div class="team-text">
+                    <h3>Creative & Problem-Solving Activities</h3>
+                    <p>Engage your team's creativity and problem-solving skills with indoor activities designed to stimulate innovation and strategic thinking in a comfortable environment.</p>
+                    <div class="team-features">
+                        <ul>
+                            <li>Escape room challenges</li>
+                            <li>Innovation workshops</li>
+                            <li>Cooking competitions</li>
+                            <li>Business simulation games</li>
+                            <li>Creative brainstorming sessions</li>
+                            <li>Leadership development exercises</li>
+                        </ul>
+                    </div>
+                    <button class="btn inquiry-btn" data-service="Creative Team Building">Learn More</button>
+                </div>
+                <div class="team-image">
+                    <img src="images/team-building-2.jpg" alt="Creative Team Building">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outdoor Catering Section -->
+    <section class="catering">
+        <div class="container">
+            <div class="section-title">
+                <h2>Outdoor Catering & Private Events</h2>
+                <p>Let us bring the Walkerbay experience to your preferred location</p>
+            </div>
+            
+            <div class="catering-content">
+                <div class="catering-text">
+                    <h3>Off-Site Catering Services</h3>
+                    <p>Our professional catering team can bring the exceptional Walkerbay dining experience to your office, venue, or outdoor location. We handle everything from menu planning to setup and service.</p>
+                    <div class="catering-features">
+                        <ul>
+                            <li>Customized menus for any occasion</li>
+                            <li>Professional serving staff</li>
+                            <li>Complete setup and cleanup</li>
+                            <li>Equipment rental available</li>
+                            <li>Dietary requirement accommodations</li>
+                            <li>Themed catering options</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="capacity-info">
+                        <h4>Catering Options:</h4>
+                        <p><strong>Corporate Lunches:</strong> Office deliveries for meetings</p>
+                        <p><strong>Cocktail Receptions:</strong> Canapés and beverages</p>
+                        <p><strong>Full-Service Events:</strong> Complete event catering</p>
+                        <p><strong>Themed Dinners:</strong> Cultural or special occasion menus</p>
+                    </div>
+                    
+                    <button class="btn inquiry-btn" data-service="Outdoor Catering">Request Catering Menu</button>
+                </div>
+                <div class="catering-image">
+                    <img src="images/outdoor-catering.jpg" alt="Outdoor Catering">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Types Section -->
+    <section class="event-types">
+        <div class="container">
+            <div class="section-title">
+                <h2>Types of Events We Host</h2>
+                <p>Versatile spaces suitable for a wide range of corporate and social events</p>
+            </div>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/business-conference.jpg" alt="Business Conferences">
+                    </div>
+                    <div class="event-content">
+                        <h3>Business Conferences</h3>
+                        <p>Annual general meetings, product launches, and industry conferences with full technical support.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/training-workshop.jpg" alt="Training Workshops">
+                    </div>
+                    <div class="event-content">
+                        <h3>Training Workshops</h3>
+                        <p>Professional development sessions, skill-building workshops, and educational seminars.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/corporate-dinner.jpg" alt="Corporate Dinners">
+                    </div>
+                    <div class="event-content">
+                        <h3>Corporate Dinners</h3>
+                        <p>Formal dinners, award ceremonies, and celebration events with customized menus.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/team-retreat.jpg" alt="Team Retreats">
+                    </div>
+                    <div class="event-content">
+                        <h3>Team Retreats</h3>
+                        <p>Strategic planning sessions, team building retreats, and executive off-sites.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/product-launch.jpg" alt="Product Launches">
+                    </div>
+                    <div class="event-content">
+                        <h3>Product Launches</h3>
+                        <p>Dynamic events to showcase new products with customized setups and branding opportunities.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/networking-event.jpg" alt="Networking Events">
+                    </div>
+                    <div class="event-content">
+                        <h3>Networking Events</h3>
+                        <p>Professional mixers, industry gatherings, and business networking functions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>See what our corporate clients have to say about their experience at Walkerbay Hotel</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "We hosted our annual regional conference at Walkerbay Hotel and were extremely impressed with their professionalism. The conference facilities were state-of-the-art, and the catering was exceptional. Our delegates are still talking about the beautiful lakeside views!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/client-1.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>James Mwangi</h4>
+                            <p>Regional Director, Tech Solutions Ltd</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Our team building retreat at Walkerbay was transformative. The adventure activities by the lake brought our team closer together, and the conference facilities provided the perfect environment for our strategic planning sessions. The customized package met all our needs perfectly."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/client-2.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Okoth</h4>
+                            <p>HR Manager, Green Energy Co.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As an NGO, we have specific budget requirements, and Walkerbay Hotel worked with us to create a package that delivered excellent value. The outdoor catering for our community event was flawless, and the staff went above and beyond to ensure everything ran smoothly."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/client-3.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>David Ochieng</h4>
+                            <p>Program Director, Community First NGO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Plan Your Event?</h2>
+                <p>Contact our events team today to discuss your requirements and receive a personalized proposal. We're committed to making your next corporate event a resounding success.</p>
+                <button class="btn" id="inquiry-cta">Get a Free Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Walkerbay Hotel</h3>
+                    <p>Where Hospitality Meets Adventure. Experience luxury accommodation, fine dining, and exceptional service at the shores of Lake Victoria.</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="accommodation.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i>📍</i>
+                            <span>Muhuru-Bay, Migori County, Kenya</span>
+                        </li>
+                        <li>
+                            <i>📞</i>
+                            <span>+254 712 345 678</span>
+                        </li>
+                        <li>
+                            <i>✉️</i>
+                            <span>info@walkerbayhotel.co.ke</span>
+                        </li>
+                        <li>
+                            <i>🌐</i>
+                            <span>www.walkerbayhotel.co.ke</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Walkerbay Hotel Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inquiry Modal -->
+    <div class="modal" id="inquiry-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Event Inquiry</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="inquiry-form">
+                    <div class="form-group">
+                        <label for="inquiry-service">Service Interested In</label>
+                        <input type="text" id="inquiry-service" class="form-control" readonly>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-type">Event Type</label>
+                            <select id="event-type" class="form-control" required>
+                                <option value="">Select Event Type</option>
+                                <option value="Conference">Conference</option>
+                                <option value="Meeting">Meeting</option>
+                                <option value="Training Workshop">Training Workshop</option>
+                                <option value="Team Building">Team Building</option>
+                                <option value="Corporate Dinner">Corporate Dinner</option>
+                                <option value="Product Launch">Product Launch</option>
+                                <option value="Networking Event">Networking Event</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="expected-attendance">Expected Attendance</label>
+                            <select id="expected-attendance" class="form-control" required>
+                                <option value="">Select Number of Guests</option>
+                                <option value="1-20">1-20 People</option>
+                                <option value="21-50">21-50 People</option>
+                                <option value="51-100">51-100 People</option>
+                                <option value="101-200">101-200 People</option>
+                                <option value="200+">200+ People</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-date">Preferred Event Date</label>
+                            <input type="date" id="event-date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="event-duration">Event Duration</label>
+                            <select id="event-duration" class="form-control">
+                                <option value="">Select Duration</option>
+                                <option value="Half Day">Half Day</option>
+                                <option value="Full Day">Full Day</option>
+                                <option value="Multiple Days">Multiple Days</option>
+                                <option value="Evening Only">Evening Only</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-name">Company/Organization Name</label>
+                        <input type="text" id="company-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-person">Contact Person</label>
+                        <input type="text" id="contact-person" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-details">Event Details & Requirements</label>
+                        <textarea id="event-details" class="form-control" rows="4" placeholder="Please provide details about your event, specific requirements, budget range, and any other relevant information"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Inquiry Modal
+        const inquiryCta = document.getElementById('inquiry-cta');
+        const inquiryBtns = document.querySelectorAll('.inquiry-btn');
+        const inquiryModal = document.getElementById('inquiry-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const inquiryService = document.getElementById('inquiry-service');
+        
+        // Function to open inquiry modal
+        function openInquiryModal(service = '') {
+            if (service) {
+                inquiryService.value = service;
+            }
+            inquiryModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Event listeners for inquiry buttons
+        inquiryCta.addEventListener('click', function() {
+            openInquiryModal('General Conference Inquiry');
+        });
+        
+        inquiryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                openInquiryModal(service);
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            inquiryModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === inquiryModal) {
+                inquiryModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Inquiry form submission
+        document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would send data to a backend
+            // For demonstration, we'll show a success message
+            alert('Thank you for your inquiry! Our events team will contact you within 24 hours with more information.');
+            inquiryModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Book Now button functionality
+        document.getElementById('book-now-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'accommodation.html';
+        });
+    </script>
+</body>
+</html>

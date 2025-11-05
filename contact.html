@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Walkerbay Hotel Limited</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #1a3d7c;
+            --secondary-blue: #2a5ba7;
+            --accent-blue: #4a7bc8;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: var(--light-text);
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .contact-hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.7), rgba(26, 61, 124, 0.7)), url('images/contact-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 90px;
+        }
+        
+        .contact-hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .contact-hero-content p {
+            font-size: 20px;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Info Section */
+        .contact-info {
+            background-color: var(--white);
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-card {
+            background-color: var(--light-blue);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-blue);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .business-hours {
+            margin-top: 30px;
+        }
+        
+        .business-hours h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-container {
+            background-color: var(--light-blue);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-blue);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Location Section */
+        .location {
+            background-color: var(--light-blue);
+        }
+        
+        .location-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .location-details {
+            flex: 1;
+        }
+        
+        .location-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .location-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .location-features {
+            margin: 25px 0;
+        }
+        
+        .location-features ul {
+            list-style: none;
+        }
+        
+        .location-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-features li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .location-map {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Departments Section */
+        .departments {
+            background-color: var(--white);
+        }
+        
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .department-card {
+            background-color: var(--light-blue);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .department-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-blue);
+            font-size: 30px;
+        }
+        
+        .department-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .department-contact {
+            margin-top: 20px;
+        }
+        
+        .department-contact p {
+            margin-bottom: 5px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background-color: var(--light-blue);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .contact-content,
+            .location-content {
+                flex-direction: column;
+            }
+            
+            .contact-hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .contact-hero-content p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 90px);
+                background-color: var(--white);
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .contact-hero {
+                height: 40vh;
+                margin-top: 90px;
+            }
+            
+            .contact-hero-content h2 {
+                font-size: 28px;
+            }
+            
+            .contact-hero-content p {
+                font-size: 16px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .departments-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Walkerbay Hotel Logo">
+                <div class="logo-text">
+                    <h1>WALKERBAY HOTELS LIMITED</h1>
+                    <p>Where Hospitality Meets Adventure</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="accommodation.html">Accommodation</a></li>
+                    <li><a href="dining.html">Dining & Entertainment</a></li>
+                    <li><a href="conferences.html">Conferences</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="#" class="btn" id="book-now-btn">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container contact-hero-content">
+            <div>
+                <h2>Get In Touch</h2>
+                <p>We're here to help with any questions or requests you may have</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Information</h2>
+                <p>Multiple ways to reach us. We're always happy to hear from you</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-details">
+                    <div class="contact-card">
+                        <h3>Main Contact</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>Muhuru-Bay, Migori County, Kenya</p>
+                                <p>Located on the shores of Lake Victoria</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+254 712 345 678</p>
+                                <p>+254 734 567 890</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@walkerbayhotel.co.ke</p>
+                                <p>reservations@walkerbayhotel.co.ke</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🌐</div>
+                            <div class="contact-text">
+                                <h4>Website</h4>
+                                <p>www.walkerbayhotel.co.ke</p>
+                            </div>
+                        </div>
+                        
+                        <div class="business-hours">
+                            <h4>Business Hours</h4>
+                            <ul class="hours-list">
+                                <li>
+                                    <span>Monday - Friday</span>
+                                    <span>7:00 AM - 10:00 PM</span>
+                                </li>
+                                <li>
+                                    <span>Saturday</span>
+                                    <span>7:00 AM - 11:00 PM</span>
+                                </li>
+                                <li>
+                                    <span>Sunday</span>
+                                    <span>7:00 AM - 10:00 PM</span>
+                                </li>
+                                <li>
+                                    <span>Reception</span>
+                                    <span>24/7</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>Emergency Contact</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">🚨</div>
+                            <div class="contact-text">
+                                <h4>Emergency Hotline</h4>
+                                <p>+254 711 123 456 (24/7)</p>
+                                <p>For urgent assistance during your stay</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🏥</div>
+                            <div class="contact-text">
+                                <h4>Medical Emergency</h4>
+                                <p>+254 722 234 567</p>
+                                <p>On-call doctor and nearby medical facilities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <div class="form-container">
+                        <h3>Send Us a Message</h3>
+                        <p>Fill out the form below and we'll get back to you as soon as possible</p>
+                        
+                        <div class="success-message" id="success-message">
+                            Thank you for your message! We'll get back to you within 24 hours.
+                        </div>
+                        
+                        <form id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" class="form-control" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Reservation">Reservation</option>
+                                    <option value="Conference/Event">Conference/Event</option>
+                                    <option value="Dining Reservation">Dining Reservation</option>
+                                    <option value="Feedback">Feedback</option>
+                                    <option value="Complaint">Complaint</option>
+                                    <option value="Partnership">Partnership</option>
+                                    <option value="Employment">Employment</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Location</h2>
+                <p>Strategically positioned at the gateway to Tanzania and Uganda with stunning lake views</p>
+            </div>
+            
+            <div class="location-content">
+                <div class="location-details">
+                    <div class="location-card">
+                        <h3>How to Find Us</h3>
+                        <p>Walkerbay Hotel is conveniently located in Muhuru-Bay, Migori County, offering easy access to key destinations in the region.</p>
+                        
+                        <div class="location-features">
+                            <h4>Location Advantages:</h4>
+                            <ul>
+                                <li>45 minutes drive from Migori town</li>
+                                <li>10 minutes from Tanzania Border</li>
+                                <li>45 minutes from the Lichota Airstrip</li>
+                                <li>Close to historical Mugabo Caves</li>
+                                <li>Proximity to Thimlich Ohinga archaeological site</li>
+                                <li>Gateway to Masai Mara National Reserve</li>
+                                <li>Access to Lake Victoria fishing and boating</li>
+                                <li>Stunning views of Africa's largest lake</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="location-features">
+                            <h4>Transportation Options:</h4>
+                            <ul>
+                                <li>Airport transfers available</li>
+                                <li>Car rental services</li>
+                                <li>Secure parking facilities</li>
+                                <li>Local taxi services</li>
+                                <li>Boat transfers to nearby islands</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn" id="get-directions">Get Directions</button>
+                    </div>
+                </div>
+                
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63839.83653515824!2d34.10745045!3d-1.06365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMDMnNDkuMSJTIDM0wrAwNic0OC44IkU!5e0!3m2!1sen!2ske!4v1234567890123!5m2!1sen!2ske" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Specific Departments</h2>
+                <p>Get in touch with the right team for your specific needs</p>
+            </div>
+            
+            <div class="departments-grid">
+                <div class="department-card">
+                    <div class="department-icon">🛎️</div>
+                    <h3>Reservations</h3>
+                    <p>For room bookings, availability inquiries, and special requests</p>
+                    <div class="department-contact">
+                        <p><strong>Email:</strong> reservations@walkerbayhotel.co.ke</p>
+                        <p><strong>Phone:</strong> +254 712 345 678</p>
+                    </div>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">💼</div>
+                    <h3>Conference & Events</h3>
+                    <p>For meetings, conferences, weddings, and special events</p>
+                    <div class="department-contact">
+                        <p><strong>Email:</strong> events@walkerbayhotel.co.ke</p>
+                        <p><strong>Phone:</strong> +254 723 456 789</p>
+                    </div>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">🍽️</div>
+                    <h3>Dining & Catering</h3>
+                    <p>For restaurant reservations, catering services, and menu inquiries</p>
+                    <div class="department-contact">
+                        <p><strong>Email:</strong> dining@walkerbayhotel.co.ke</p>
+                        <p><strong>Phone:</strong> +254 734 567 890</p>
+                    </div>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">👥</div>
+                    <h3>Human Resources</h3>
+                    <p>For employment opportunities and career inquiries</p>
+                    <div class="department-contact">
+                        <p><strong>Email:</strong> careers@walkerbayhotel.co.ke</p>
+                        <p><strong>Phone:</strong> +254 745 678 901</p>
+                    </div>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">🤝</div>
+                    <h3>Sales & Marketing</h3>
+                    <p>For partnership opportunities and marketing inquiries</p>
+                    <div class="department-contact">
+                        <p><strong>Email:</strong> sales@walkerbayhotel.co.ke</p>
+                        <p><strong>Phone:</strong> +254 756 789 012</p>
+                    </div>
+                </div>
+                
+                <div class="department-card">
+                    <div class="department-icon">💬</div>
+                    <h3>Customer Service</h3>
+                    <p>For feedback, complaints, and general assistance</p>
+                    <div class="department-contact">
+                        <p><strong>Email:</strong> service@walkerbayhotel.co.ke</p>
+                        <p><strong>Phone:</strong> +254 767 890 123</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about our hotel and services</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">What is your check-in and check-out time?</div>
+                    <div class="faq-answer">
+                        <p>Check-in time is from 2:00 PM, and check-out time is by 11:00 AM. Early check-in and late check-out may be available upon request, subject to availability and additional charges.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer airport transfers?</div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer airport transfer services from Lichota Airstrip (45 minutes away) and other nearby airports. Please contact our reservations team in advance to arrange your transfer.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What payment methods do you accept?</div>
+                    <div class="faq-answer">
+                        <p>We accept cash (Kenyan Shillings, US Dollars), credit/debit cards (Visa, MasterCard), and M-Pesa payments. For M-Pesa payments, use Paybill number 123456 with your booking ID as the account number.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is Wi-Fi available throughout the hotel?</div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer complimentary high-speed Wi-Fi throughout the hotel, including all guest rooms, restaurants, and public areas.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do you have facilities for guests with disabilities?</div>
+                    <div class="faq-answer">
+                        <p>Yes, we have accessible rooms and facilities for guests with disabilities. Please inform us of any specific requirements when making your reservation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I host events or conferences at your hotel?</div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We have comprehensive conference facilities that can accommodate events from 10 to 200 people. Contact our events team for customized packages and availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer special rates for long stays or group bookings?</div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer special rates for extended stays and group bookings. Please contact our reservations team for customized quotes based on your specific requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Experience Walkerbay Hotel?</h2>
+                <p>Book your stay today and discover the perfect blend of luxury, comfort, and adventure at the shores of Lake Victoria.</p>
+                <button class="btn" id="cta-book-now">Book Your Stay</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Walkerbay Hotel</h3>
+                    <p>Where Hospitality Meets Adventure. Experience luxury accommodation, fine dining, and exceptional service at the shores of Lake Victoria.</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="accommodation.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i>📍</i>
+                            <span>Muhuru-Bay, Migori County, Kenya</span>
+                        </li>
+                        <li>
+                            <i>📞</i>
+                            <span>+254 712 345 678</span>
+                        </li>
+                        <li>
+                            <i>✉️</i>
+                            <span>info@walkerbayhotel.co.ke</span>
+                        </li>
+                        <li>
+                            <i>🌐</i>
+                            <span>www.walkerbayhotel.co.ke</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Walkerbay Hotel Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would send data to a backend
+            // For demonstration, we'll show a success message
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('success-message').style.display = 'none';
+            }, 5000);
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', function() {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Get Directions Button
+        document.getElementById('get-directions').addEventListener('click', function() {
+            // In a real implementation, this would open Google Maps with the hotel location
+            window.open('https://www.google.com/maps/dir//Walkerbay+Hotel+Muhuru-Bay+Migori+County+Kenya', '_blank');
+        });
+
+        // CTA Book Now Button
+        document.getElementById('cta-book-now').addEventListener('click', function() {
+            window.location.href = 'accommodation.html';
+        });
+
+        // Header Book Now Button
+        document.getElementById('book-now-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'accommodation.html';
+        });
+
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
